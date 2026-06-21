@@ -1,229 +1,438 @@
-<!DOCTYPE HTML>
 <!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  ============================================================
+  SOCIABLE WEAVERS — Studio Site (v2)
+  ============================================================
+  EDITING PROJECTS
+  ----------------
+  All project content lives in the PROJECTS array below.
+  To add a project: copy one { } block, change the fields,
+  drop its image in the /images folder, point `cover` at it.
+  No other code needs to change.
+
+  DEPLOY
+  ------
+  Upload index.html + the /images folder together to GitHub,
+  then connect the repo to Cloudflare Pages. Keep them in the
+  same folder so image paths (images/...) resolve.
+  ============================================================
 -->
-<html>
-	<head>
-		<title>Massively by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociable Weavers — Hospitality &amp; F&amp;B Interior Design</title>
+<meta name="description" content="A Bangalore interior design studio shaping resorts, restaurants and residences around how people gather.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<script>
+/* ============= EDIT YOUR PROJECTS HERE ============= */
+const PROJECTS = [
+  {
+    name: "Chidambaram Palace",
+    type: "Hospitality · Adaptive Reuse",
+    location: "Kanadukathan, Tamil Nadu",
+    year: "45,000 sq ft",
+    blurb: "A century-old Chettinad palace restored into an atmospheric heritage restaurant. Cross-cultural materials and original craft, brought back to life with the comforts of a modern eatery.",
+    cover: "images/chid_cover.jpg"
+  },
+  {
+    name: "Viola Resort & Spa",
+    type: "Resort · Master Planning",
+    location: "Belur, Karnataka",
+    year: "9 acres",
+    blurb: "An eco-conscious resort set within a coffee and spice plantation in the Western Ghats. Cottages, pools and pavilions woven through the landscape, far from the noise.",
+    cover: "images/viola_cover.jpg"
+  },
+  {
+    name: "Mariwala House",
+    type: "Private Residence",
+    location: "Coonoor, Tamil Nadu",
+    year: "1 acre",
+    blurb: "A hillside home organised around a central court that splits living from rest. Every space reaches for the Coonoor valley view and the sloping tea plantations below.",
+    cover: "images/mari_cover.jpg"
+  }
+];
+/* =================================================== */
+</script>
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+<style>
+  :root{
+    --terra:#B74343;
+    --ink:#272727;
+    --teal:#0D7070;
+    --greige:#E4E2DD;
+    --paper:#EDEBE6;
+    --line:rgba(39,39,39,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--greige);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1340px;margin:0 auto;padding:0 40px}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--terra);color:var(--greige)}
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
-					</header>
+  .serif{font-family:"Fraunces",serif;font-weight:400;letter-spacing:-.01em}
+  .label{font-family:"Space Grotesk",sans-serif;font-weight:500;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
-							<li><a href="generic.html">Generic Page</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  /* ---------- NAV ---------- */
+  header{position:fixed;inset:0 0 auto 0;z-index:60;
+    background:rgba(228,226,221,0);backdrop-filter:blur(0);transition:background .4s,backdrop-filter .4s}
+  header.solid{background:rgba(228,226,221,.8);backdrop-filter:blur(10px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .brand{display:flex;align-items:center;gap:13px;font-family:"Space Grotesk";font-weight:700;
+    font-size:19px;letter-spacing:-.01em;color:var(--greige);transition:color .4s}
+  header.solid .brand{color:var(--ink)}
+  .brand img{width:40px;height:40px;object-fit:contain}
+  .nav-links{display:flex;gap:38px}
+  .nav-links a{font-family:"Space Grotesk";font-weight:500;font-size:14px;
+    opacity:.85;transition:opacity .2s;color:var(--greige)}
+  header.solid .nav-links a{color:var(--ink);opacity:.72}
+  .nav-links a:hover{opacity:1}
+  .nav-cta{border:1.5px solid var(--greige);border-radius:100px;padding:9px 22px;
+    font-family:"Space Grotesk";font-weight:500;font-size:14px;transition:.2s;color:var(--greige)}
+  header.solid .nav-cta{border-color:var(--ink);color:var(--ink)}
+  .nav-cta:hover{background:var(--greige);color:var(--ink)}
+  header.solid .nav-cta:hover{background:var(--ink);color:var(--greige)}
 
-				<!-- Main -->
-					<div id="main">
+  /* ---------- HERO ---------- */
+  .hero{height:100vh;min-height:640px;position:relative;display:flex;
+    align-items:flex-end;overflow:hidden}
+  .hero-img{position:absolute;inset:0}
+  .hero-img img{width:100%;height:100%;object-fit:cover;
+    transform:scale(1.08);animation:slowzoom 14s ease-out forwards}
+  .hero-img::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(39,39,39,.72) 0%,rgba(39,39,39,.12) 45%,rgba(39,39,39,.32) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:8vh}
+  .hero .eyebrow{color:var(--greige);opacity:0;animation:fade .9s .3s forwards}
+  .hero h1{color:var(--greige);font-size:clamp(40px,6.6vw,96px);line-height:1.02;
+    margin-top:22px;max-width:18ch;letter-spacing:-.02em}
+  .hero h1 em{font-style:italic;color:#fff}
+  .hero h1 .ln{display:block;overflow:hidden}
+  .hero h1 .ln i{display:block;font-style:inherit;transform:translateY(108%);
+    animation:reveal 1s cubic-bezier(.16,1,.3,1) forwards}
+  .hero h1 .ln:nth-child(2) i{animation-delay:.13s}
+  .hero-scroll{position:absolute;right:40px;bottom:8vh;z-index:2;color:var(--greige);
+    display:flex;flex-direction:column;align-items:center;gap:14px;opacity:0;animation:fade .9s 1s forwards}
+  .hero-scroll .ln-v{width:1px;height:48px;background:rgba(228,226,221,.5);overflow:hidden;position:relative}
+  .hero-scroll .ln-v::after{content:"";position:absolute;inset:0;background:var(--greige);
+    animation:scrolldown 2s ease-in-out infinite}
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
+  /* ---------- MARQUEE BANNER ---------- */
+  .marquee{background:var(--ink);color:var(--greige);padding:26px 0;overflow:hidden;
+    border-top:1px solid rgba(228,226,221,.12);border-bottom:1px solid rgba(228,226,221,.12)}
+  .marquee-track{display:flex;width:max-content;animation:scrollx 38s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-item{font-family:"Fraunces",serif;font-size:clamp(26px,3.4vw,44px);
+    padding:0 34px;display:flex;align-items:center;gap:34px;white-space:nowrap}
+  .marquee-item::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--terra)}
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">April 24, 2017</span>
-										<h2><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 22, 2017</span>
-										<h2><a href="#">Primis eget<br />
-										imperdiet lorem</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section>
+  /* ---------- INTRO STATEMENT ---------- */
+  .intro{padding:140px 0 120px}
+  .intro .label{color:var(--teal);margin-bottom:40px}
+  .intro p{font-family:"Fraunces",serif;font-size:clamp(26px,3.4vw,46px);
+    line-height:1.3;max-width:26ch;letter-spacing:-.015em}
+  .intro em{font-style:italic;color:var(--terra)}
 
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
+  /* ---------- WORK ---------- */
+  .work{padding:40px 0 60px}
+  .work-head{display:flex;justify-content:space-between;align-items:baseline;
+    padding-bottom:30px;border-bottom:1px solid var(--line)}
+  .work-head h2{font-family:"Space Grotesk";font-weight:700;font-size:clamp(24px,3vw,40px);letter-spacing:-.02em}
+  .work-head .label{color:var(--teal)}
+  .project{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+    padding:90px 0;border-bottom:1px solid var(--line)}
+  .project:nth-child(even) .project-img{order:2}
+  .project-img{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--paper)}
+  .project-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.16,1,.3,1);filter:saturate(.96)}
+  .project:hover .project-img img{transform:scale(1.05)}
+  .project-num{position:absolute;top:22px;left:24px;z-index:2;font-family:"Space Grotesk";
+    font-weight:500;font-size:13px;color:var(--greige);mix-blend-mode:difference}
+  .project-meta .label{color:var(--teal);margin-bottom:18px}
+  .project-meta h3{font-family:"Fraunces",serif;font-size:clamp(30px,3.6vw,52px);
+    line-height:1.05;letter-spacing:-.02em;margin-bottom:20px}
+  .project-meta .loc{font-family:"Space Grotesk";font-size:15px;color:rgba(39,39,39,.6);
+    margin-bottom:24px;display:flex;align-items:center}
+  .project-meta .loc .dot{width:4px;height:4px;border-radius:50%;background:var(--terra);margin:0 14px}
+  .project-meta p{font-size:17px;color:rgba(39,39,39,.82);max-width:46ch;margin-bottom:30px}
+  .project-link{font-family:"Space Grotesk";font-weight:500;font-size:14px;letter-spacing:.04em;
+    border-bottom:1.5px solid var(--ink);padding-bottom:4px;transition:.25s}
+  .project-link:hover{color:var(--terra);border-color:var(--terra)}
 
-					</div>
+  /* ---------- COLLAGE GALLERY ---------- */
+  .gallery{padding:110px 0 40px}
+  .gallery-head{display:flex;justify-content:space-between;align-items:baseline;
+    padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:46px}
+  .gallery-head h2{font-family:"Space Grotesk";font-weight:700;font-size:clamp(24px,3vw,40px);letter-spacing:-.02em}
+  .gallery-head .label{color:var(--teal)}
+  /* masonry via CSS columns: dense, irregular, Case Design feel */
+  .collage{columns:3;column-gap:18px}
+  .tile{position:relative;break-inside:avoid;margin-bottom:18px;overflow:hidden;
+    background:var(--paper);display:block;border-radius:2px}
+  .tile img{width:100%;display:block;transition:transform 1.1s cubic-bezier(.16,1,.3,1),filter .5s;
+    filter:saturate(.95)}
+  .tile:hover img{transform:scale(1.05)}
+  .tile-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 16px 14px;
+    background:linear-gradient(to top,rgba(39,39,39,.78),transparent);
+    opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+  .tile:hover .tile-cap{opacity:1;transform:translateY(0)}
+  .tile-cap .t{font-family:"Space Grotesk";font-weight:500;font-size:14px;color:var(--greige)}
+  .tile-cap .s{font-family:"Space Grotesk";font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(228,226,221,.7);margin-top:2px}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1234 Somewhere Road #87257<br />
-								Nashville, TN 00000-0000</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(000) 000-0000</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">info@untitled.tld</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+  /* ---------- STUDIO ---------- */
+  .studio{padding:130px 0}
+  .studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:start}
+  .studio .label{color:var(--teal);margin-bottom:30px}
+  .studio h2{font-family:"Fraunces",serif;font-size:clamp(28px,3.4vw,44px);
+    line-height:1.22;letter-spacing:-.015em}
+  .studio h2 em{font-style:italic;color:var(--terra)}
+  .studio .body p{margin-bottom:20px;color:rgba(39,39,39,.82);font-size:17px}
+  .approach{margin-top:36px}
+  .arow{display:flex;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+  .arow:last-child{border-bottom:1px solid var(--line)}
+  .arow .n{font-family:"Space Grotesk";font-weight:500;color:var(--teal);font-size:13px;min-width:30px;padding-top:3px}
+  .arow .t{font-family:"Space Grotesk";font-weight:500;font-size:18px;margin-bottom:4px}
+  .arow .d{font-size:15px;color:rgba(39,39,39,.68)}
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+  /* ---------- CONTACT ---------- */
+  .contact-sec{padding:0 0 30px}
+  .contact{background:var(--ink);color:var(--greige);padding:96px 70px;position:relative;overflow:hidden}
+  .contact .label{color:#E78B8B;margin-bottom:30px}
+  .contact h2{font-family:"Fraunces",serif;font-size:clamp(34px,5.2vw,76px);
+    line-height:1.05;letter-spacing:-.02em;max-width:15ch}
+  .contact h2 em{font-style:italic;color:#E78B8B}
+  .c-mail{display:inline-flex;align-items:center;gap:14px;margin-top:44px;
+    font-family:"Fraunces",serif;font-size:clamp(22px,3vw,38px);
+    border-bottom:1.5px solid rgba(228,226,221,.4);padding-bottom:8px;transition:.25s}
+  .c-mail:hover{border-color:var(--greige)}
+  .c-grid{display:grid;grid-template-columns:repeat(5,auto);gap:44px;margin-top:64px;
+    position:relative;z-index:2}
+  .c-grid .k{font-family:"Space Grotesk";font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(228,226,221,.5);margin-bottom:10px}
+  .c-grid .v{font-family:"Space Grotesk";font-size:15px;line-height:1.5}
+  .c-grid a.v:hover{color:#E78B8B}
+  .c-bird{position:absolute;right:-80px;bottom:-80px;width:380px;opacity:.05;pointer-events:none}
 
-			</div>
+  /* ---------- FOOTER ---------- */
+  footer{padding:46px 0 60px;display:flex;justify-content:space-between;
+    align-items:center;flex-wrap:wrap;gap:16px;font-family:"Space Grotesk";
+    font-size:13px;color:rgba(39,39,39,.6)}
+  footer .fl{display:flex;gap:26px}
+  footer a:hover{color:var(--terra)}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ---------- ANIMATIONS ---------- */
+  @keyframes reveal{to{transform:translateY(0)}}
+  @keyframes fade{to{opacity:1}}
+  @keyframes slowzoom{to{transform:scale(1)}}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+  @keyframes scrolldown{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+  .ros{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
+  .ros.in{opacity:1;transform:translateY(0)}
 
-	</body>
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .wrap{padding:0 22px}
+    .nav-links{display:none}
+    .intro{padding:90px 0 70px}
+    .project{grid-template-columns:1fr;gap:30px;padding:54px 0}
+    .project:nth-child(even) .project-img{order:0}
+    .studio-grid{grid-template-columns:1fr;gap:40px}
+    .studio{padding:80px 0}
+    .contact{padding:60px 28px}
+    .c-grid{grid-template-columns:1fr 1fr;gap:30px}    .marquee-item{font-size:28px}
+    .collage{columns:2;column-gap:12px}
+    .tile{margin-bottom:12px}
+    .gallery{padding:60px 0 20px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .hero h1 .ln i{transform:none}.hero-img img{transform:none}
+    .ros{opacity:1;transform:none}
+    .marquee-track{animation:scrollx 38s linear infinite!important}
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand"><img src="images/logo.png" alt="Sociable Weavers">Sociable Weavers</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a project</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img"><img src="images/chid_cover.jpg" alt="Restored Chettinad palace courtyard"></div>
+    <div class="wrap hero-inner">
+      <div class="label eyebrow">Hospitality &amp; F&amp;B Interior Design · Bengaluru</div>
+      <h1 class="serif">
+        <span class="ln"><i>We design spaces</i></span>
+        <span class="ln"><i>that <em>gather.</em></i></span>
+      </h1>
+    </div>
+    <div class="hero-scroll"><span class="label">Scroll</span><span class="ln-v"></span></div>
+  </section>
+
+  <!-- MARQUEE BANNER -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee"></div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro wrap">
+    <div class="label">The Studio</div>
+    <p class="serif">Named after the bird that builds the world's largest communal nests, we design for <em>gathering</em> — resorts, restaurants and homes shaped around how people meet, linger and return.</p>
+  </section>
+
+  <!-- WORK -->
+  <section class="work wrap" id="work">
+    <div class="work-head">
+      <h2>Selected Work</h2>
+      <span class="label">Resorts · Residences · F&amp;B</span>
+    </div>
+    <div id="projects"></div>
+  </section>
+
+  <!-- COLLAGE GALLERY -->
+  <section class="gallery wrap" id="gallery">
+    <div class="gallery-head">
+      <h2>From the Studio</h2>
+      <span class="label">Selected Imagery</span>
+    </div>
+    <div class="collage" id="collage"></div>
+  </section>
+
+  <!-- STUDIO -->
+  <section class="studio wrap" id="studio">
+    <div class="studio-grid">
+      <div>
+        <div class="label">Approach</div>
+        <h2 class="serif">We pair design instinct with <em>data</em> — popular-times analysis, seat-mix studies and dwell-time modelling that make a space perform as well as it photographs.</h2>
+      </div>
+      <div class="body">
+        <p>Sociable Weavers is a hospitality and F&amp;B interior design studio based in Bengaluru, led by a designer with over a decade shaping spaces at Gensler and beyond.</p>
+        <p>We work across resorts, restaurants and private residences, from concept and master planning through detailed GFC drawings and on-site coordination.</p>
+        <div class="approach">
+          <div class="arow"><div class="n">01</div><div><div class="t">Read the room</div><div class="d">Footfall, dwell-time and seat-mix data before a single line is drawn.</div></div></div>
+          <div class="arow"><div class="n">02</div><div><div class="t">Design to gather</div><div class="d">Circulation and sightlines that bring people together, not past each other.</div></div></div>
+          <div class="arow"><div class="n">03</div><div><div class="t">Build to last</div><div class="d">Material rigour and detailed drawings, from concept to handover.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-sec wrap" id="contact">
+    <div class="contact">
+      <div class="label">Contact</div>
+      <h2 class="serif">Have a space that should bring people <em>together?</em></h2>
+      <a href="mailto:shirin@sociableweavers.in" class="c-mail">shirin@sociableweavers.in →</a>
+      <div class="c-grid">
+        <div><div class="k">Studio</div><div class="v">BHIVE, Sree Krishna Temple Road,<br>Indiranagar, Bengaluru</div></div>
+        <div><div class="k">Call</div><a class="v" href="tel:+919916471661">+91 99164 71661</a></div>
+        <div><div class="k">Email</div><a class="v" href="mailto:shirin@sociableweavers.in">shirin@sociableweavers.in</a></div>
+        <div><div class="k">Web</div><a class="v" href="https://sociableweavers.in">sociableweavers.in</a></div>
+        <div><div class="k">Follow</div>
+          <a class="v" href="https://www.instagram.com/sociable_weavers/" target="_blank" rel="noopener">Instagram</a><br>
+          <a class="v" href="https://www.youtube.com/@SociableWeavers" target="_blank" rel="noopener">YouTube</a><br>
+          <a class="v" href="https://in.pinterest.com/sociableweavers/" target="_blank" rel="noopener">Pinterest</a>
+        </div>
+      </div>
+      <img class="c-bird" src="images/logo.png" alt="">
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Sociable Weavers</span>
+  <span class="fl"><a href="https://www.instagram.com/sociable_weavers/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/@SociableWeavers" target="_blank" rel="noopener">YouTube</a><a href="https://in.pinterest.com/sociableweavers/" target="_blank" rel="noopener">Pinterest</a><a href="mailto:shirin@sociableweavers.in">Email</a></span>
+  <span>Hospitality &amp; F&amp;B · Bengaluru</span>
+</footer>
+
+<script>
+  /* ---- build projects ---- */
+  const pc = document.getElementById('projects');
+  PROJECTS.forEach((p,i)=>{
+    const el = document.createElement('article');
+    el.className='project';
+    el.innerHTML = `
+      <div class="project-img">
+        <span class="project-num">${String(i+1).padStart(2,'0')} / ${String(PROJECTS.length).padStart(2,'0')}</span>
+        <img src="${p.cover}" alt="${p.name}" loading="lazy">
+      </div>
+      <div class="project-meta">
+        <div class="label">${p.type}</div>
+        <h3 class="serif">${p.name}</h3>
+        <div class="loc"><span>${p.location}</span><span class="dot"></span><span>${p.year}</span></div>
+        <p>${p.blurb}</p>
+        <a class="project-link" href="#contact">Enquire about this project →</a>
+      </div>`;
+    pc.appendChild(el);
+  });
+
+  /* ---- collage gallery ---- */
+  const GALLERY = [
+    {src:"images/g_chid_lounge.jpg",     t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_mari_hillside.jpg",   t:"Mariwala House",     s:"Private Residence"},
+    {src:"images/g_viola_deck.jpg",      t:"Viola Resort",       s:"Resort"},
+    {src:"images/g_chid_sitting.jpg",    t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_viola_pool.jpg",      t:"Viola Resort",       s:"Resort"},
+    {src:"images/g_chid_kolam.jpg",      t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_mari_3.jpg",          t:"Mariwala House",     s:"Private Residence"},
+    {src:"images/g_chid_dining.jpg",     t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_viola_pond.jpg",      t:"Viola Resort",       s:"Resort"},
+    {src:"images/g_chid_corridor.jpg",   t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_mari_2.jpg",          t:"Mariwala House",     s:"Private Residence"},
+    {src:"images/g_viola_pergola.jpg",   t:"Viola Resort",       s:"Resort"},
+    {src:"images/g_chid_bath.jpg",       t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_mari_5.jpg",          t:"Mariwala House",     s:"Private Residence"},
+    {src:"images/g_viola_court.jpg",     t:"Viola Resort",       s:"Resort"},
+    {src:"images/g_chid_frontcourt.jpg", t:"Chidambaram Palace", s:"Heritage Reuse"},
+    {src:"images/g_mari_7.jpg",          t:"Mariwala House",     s:"Private Residence"},
+    {src:"images/g_viola_poolbar.jpg",   t:"Viola Resort",       s:"Resort"},
+    {src:"images/g_mari_9.jpg",          t:"Mariwala House",     s:"Private Residence"},
+    {src:"images/g_chid_courtyard.jpg",  t:"Chidambaram Palace", s:"Heritage Reuse"}
+  ];
+  const cg = document.getElementById('collage');
+  GALLERY.forEach(g=>{
+    const a=document.createElement('a');
+    a.className='tile'; a.href='#contact';
+    a.innerHTML=`<img src="${g.src}" alt="${g.t}" loading="lazy">
+      <div class="tile-cap"><div class="t">${g.t}</div><div class="s">${g.s}</div></div>`;
+    cg.appendChild(a);
+  });
+
+  /* ---- marquee: studio disciplines ---- */
+  const words = ["Resorts","Restaurants","Private Residences","Heritage Reuse","Master Planning","F&B Interiors","Hospitality Design"];
+  const mk = document.getElementById('marquee');
+  const buildSet = ()=> words.map(w=>`<span class="marquee-item serif">${w}</span>`).join('');
+  mk.innerHTML = buildSet()+buildSet();
+
+  /* ---- nav background on scroll ---- */
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>80));
+
+  /* ---- scroll reveal ---- */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.14});
+  document.querySelectorAll('.project').forEach(el=>{el.classList.add('ros');io.observe(el)});
+  [document.querySelector('.intro p'),document.querySelector('.studio-grid'),document.querySelector('.contact')].forEach(el=>{el.classList.add('ros');io.observe(el)});
+</script>
+</body>
 </html>
