@@ -204,6 +204,43 @@ const PROJECTS = [
     font-family:"Fraunces",serif;font-size:clamp(22px,3vw,38px);
     border-bottom:1.5px solid rgba(228,226,221,.4);padding-bottom:8px;transition:.25s}
   .c-mail:hover{border-color:var(--greige)}
+
+  /* ---------- CONTACT FORM ---------- */
+  .c-form{margin-top:48px;max-width:620px;position:relative;z-index:2}
+  .c-form .hp{display:none}
+  .c-form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .c-field{margin-bottom:24px;display:flex;flex-direction:column}
+  .c-field label{font-family:"Space Grotesk";font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(228,226,221,.55);margin-bottom:10px}
+  .c-field input,.c-field textarea{
+    background:transparent;border:none;border-bottom:1.5px solid rgba(228,226,221,.28);
+    color:var(--greige);font-family:"Inter",sans-serif;font-size:16px;
+    padding:8px 0;transition:border-color .25s;border-radius:0}
+  .c-field textarea{resize:vertical;min-height:90px;line-height:1.5}
+  .c-field input::placeholder,.c-field textarea::placeholder{color:rgba(228,226,221,.32)}
+  .c-field input:focus,.c-field textarea:focus{outline:none;border-color:#E78B8B}
+  .c-phone{display:flex;gap:12px;align-items:stretch}
+  .c-phone select{
+    background:transparent;border:none;border-bottom:1.5px solid rgba(228,226,221,.28);
+    color:var(--greige);font-family:"Inter",sans-serif;font-size:16px;
+    padding:8px 24px 8px 0;transition:border-color .25s;border-radius:0;
+    cursor:pointer;flex:0 0 auto;
+    -webkit-appearance:none;appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23E4E2DD' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 4px center}
+  .c-phone select:focus{outline:none;border-color:#E78B8B}
+  .c-phone select option{background:var(--ink);color:var(--greige)}
+  .c-phone input{flex:1 1 auto;min-width:0}
+  .c-form-foot{display:flex;align-items:center;gap:20px;margin-top:34px;flex-wrap:wrap}
+  .c-submit{background:var(--greige);color:var(--ink);border:none;cursor:pointer;
+    font-family:"Space Grotesk";font-weight:500;font-size:15px;letter-spacing:.02em;
+    padding:14px 28px;border-radius:100px;transition:.25s}
+  .c-submit:hover{background:#E78B8B;color:var(--ink)}
+  .c-submit:disabled{opacity:.5;cursor:default}
+  .c-status{font-family:"Space Grotesk";font-size:14px;color:rgba(228,226,221,.75)}
+  .c-status.ok{color:#9FD7A0}
+  .c-status.err{color:#E78B8B}
+
   .c-grid{display:grid;grid-template-columns:repeat(5,auto);gap:44px;margin-top:64px;
     position:relative;z-index:2}
   .c-grid .k{font-family:"Space Grotesk";font-size:11px;letter-spacing:.16em;text-transform:uppercase;
@@ -252,6 +289,8 @@ const PROJECTS = [
     .studio h2{font-size:clamp(24px,6.5vw,32px)}
     .contact{padding:48px 22px}
     .contact h2{font-size:clamp(30px,9vw,46px)}
+    .c-form-row{grid-template-columns:1fr;gap:0}
+    .c-form{margin-top:36px}
     .c-mail{font-size:clamp(18px,5.5vw,26px);word-break:break-word}
     .c-grid{grid-template-columns:1fr 1fr;gap:26px 18px}
     .c-grid .v{font-size:14px;word-break:break-word}
@@ -349,7 +388,67 @@ const PROJECTS = [
     <div class="contact">
       <div class="label">Contact</div>
       <h2 class="serif">Have a space that should bring people <em>together?</em></h2>
-      <a href="mailto:shirin@sociableweavers.in" class="c-mail">shirin@sociableweavers.in →</a>
+
+      <form class="c-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- ============================================================
+             SET UP SUBMISSIONS (2 minutes, free):
+             1. Go to web3forms.com, enter shirin@sociableweavers.in
+             2. Check that inbox, copy the Access Key they send
+             3. Paste it below, replacing 47996677-a896-410a-ad8f-4e4e228733eb
+             Submissions then arrive as email to shirin@sociableweavers.in.
+             Until then, the form falls back to opening an email.
+             ============================================================ -->
+        <input type="hidden" name="access_key" value="47996677-a896-410a-ad8f-4e4e228733eb">
+        <input type="hidden" name="subject" value="New enquiry from sociableweavers.in">
+        <input type="hidden" name="from_name" value="Sociable Weavers Website">
+        <!-- honeypot spam trap -->
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+        <div class="c-form-row">
+          <div class="c-field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="c-field">
+            <label for="cf-phone">Phone</label>
+            <div class="c-phone">
+              <select id="cf-code" name="country_code" aria-label="Country code">
+                <option value="+91" selected>IN +91</option>
+                <option value="+1">US/CA +1</option>
+                <option value="+44">UK +44</option>
+                <option value="+971">UAE +971</option>
+                <option value="+966">KSA +966</option>
+                <option value="+65">SG +65</option>
+                <option value="+61">AU +61</option>
+                <option value="+60">MY +60</option>
+                <option value="+49">DE +49</option>
+                <option value="+33">FR +33</option>
+                <option value="+81">JP +81</option>
+                <option value="+86">CN +86</option>
+                <option value="+974">QA +974</option>
+                <option value="+968">OM +968</option>
+                <option value="+973">BH +973</option>
+                <option value="+977">NP +977</option>
+                <option value="+94">LK +94</option>
+                <option value="+880">BD +880</option>
+              </select>
+              <input type="tel" id="cf-phone" name="phone" required autocomplete="tel" placeholder="99164 71661">
+            </div>
+          </div>
+        </div>
+        <div class="c-field">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="c-field">
+          <label for="cf-req">Requirement</label>
+          <textarea id="cf-req" name="requirement" rows="4" required placeholder="Tell us about your project, space or timeline"></textarea>
+        </div>
+        <div class="c-form-foot">
+          <button type="submit" class="c-submit">Send enquiry →</button>
+          <span class="c-status" id="cf-status" role="status"></span>
+        </div>
+      </form>
       <div class="c-grid">
         <div><div class="k">Studio</div><div class="v">BHIVE, Sree Krishna Temple Road,<br>Indiranagar, Bengaluru</div></div>
         <div><div class="k">Call</div><a class="v" href="tel:+919916471661">+91 99164 71661</a></div>
@@ -458,11 +557,49 @@ const PROJECTS = [
 
   /* ---- click empty (non-interactive) space scrolls to top ---- */
   document.addEventListener('click',e=>{
-    // ignore clicks on links, buttons, images, or anything inside them
-    if(e.target.closest('a, button, input, textarea, select, label, .tile, .project-img, [role="button"]')) return;
+    // ignore clicks on links, buttons, form fields, the form itself, or images
+    if(e.target.closest('a, button, input, textarea, select, label, form, .tile, .project-img, [role="button"]')) return;
     // ignore text selections
     if(window.getSelection && window.getSelection().toString()) return;
     window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---- contact form submit ---- */
+  const cForm=document.getElementById('contactForm');
+  const cStatus=document.getElementById('cf-status');
+  const cBtn=cForm.querySelector('.c-submit');
+  cForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    cStatus.className='c-status'; cStatus.textContent='Sending...';
+    cBtn.disabled=true;
+    const data=new FormData(cForm);
+    // combine country code + number into one phone value
+    const code=data.get('country_code')||'';
+    const num=(data.get('phone')||'').trim();
+    data.set('phone', (code+' '+num).trim());
+    data.delete('country_code');
+    try{
+      const res=await fetch(cForm.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+      const out=await res.json();
+      if(res.ok && out.success){
+        cForm.reset();
+        cStatus.className='c-status ok';
+        cStatus.textContent='Thank you. We will be in touch shortly.';
+      }else{
+        throw new Error(out.message||'Submission failed');
+      }
+    }catch(err){
+      // fallback: open an email with the details so the enquiry is never lost
+      cStatus.className='c-status err';
+      const name=encodeURIComponent(data.get('name')||'');
+      const phone=encodeURIComponent(data.get('phone')||'');
+      const email=encodeURIComponent(data.get('email')||'');
+      const req=encodeURIComponent(data.get('requirement')||'');
+      const body=`Name: ${decodeURIComponent(name)}%0APhone: ${decodeURIComponent(phone)}%0AEmail: ${decodeURIComponent(email)}%0A%0A${decodeURIComponent(req)}`;
+      cStatus.innerHTML='Could not send automatically. <a href="mailto:shirin@sociableweavers.in?subject=Website%20enquiry&body='+body+'" style="color:#E78B8B;border-bottom:1px solid #E78B8B">Email us instead →</a>';
+    }finally{
+      cBtn.disabled=false;
+    }
   });
 </script>
 </body>
